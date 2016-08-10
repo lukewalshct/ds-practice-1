@@ -1,0 +1,6 @@
+Problem 1:
+1. Can the parameters be assumed to be valid?
+2. Are arrays with length 0 valid?
+3. Can I assumethe first input array have size M?
+4. Can I make assumptions about the distribution of the elements in the input arrays?
+For example in array b, can I assume elements are in the first or the second half of the array?
