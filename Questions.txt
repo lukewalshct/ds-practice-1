@@ -4,3 +4,8 @@ Problem 1:
 3. Can I assumethe first input array have size M?
 4. Can I make assumptions about the distribution of the elements in the input arrays?
 For example in array b, can I assume elements are in the first or the second half of the array?
+5. Can I get clarification on sorted? I.e. is it okay to assume the input arrays are sorted in
+ascending order, and the desired result is to have a merged array in ascending order?
+6. By return the correct output, do you mean print results? Or can I change the signature of the
+method from void to int[]?
+7. Assuming it's ok to make the method public?
