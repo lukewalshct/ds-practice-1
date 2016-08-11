@@ -9,3 +9,7 @@ ascending order, and the desired result is to have a merged array in ascending o
 6. By return the correct output, do you mean print results? Or can I change the signature of the
 method from void to int[]?
 7. Assuming it's ok to make the method public?
+
+Problem 3:
+1. To clarify, action X corresponds to N? So on the first move Jack can either jump 1 step or stay, 
+on the second move he can either jump 2 steps or stay, etc.
