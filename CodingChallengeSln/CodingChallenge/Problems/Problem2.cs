@@ -19,10 +19,11 @@ namespace CodingChallenge.Problems
                 throw new ArgumentOutOfRangeException("String must be between 1 and 103 characters.");
             }
 
+            N = N.ToLower();
             HashSet<char> remainingChars = createRemainingCharsSet();
 
             for(int i = 0; i < N.Length; i++)
-            {
+            {                
                 remainingChars.Remove(N[i]);
             }
 
