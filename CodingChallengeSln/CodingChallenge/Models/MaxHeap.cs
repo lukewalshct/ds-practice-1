@@ -11,23 +11,24 @@ namespace CodingChallenge.Models
         private int[] items;
         public int numItems { get; internal set; }
 
-        public MaxHeap(int heapSize)
-        {
-            this.items = new int[heapSize];
-            this.numItems = 0;
-        }
-
-        public MaxHeap(int[] toHeapify)
+        public MaxHeap(int[] toHeapify, int size)
         {
             if (toHeapify == null)
             {
                 throw new ArgumentNullException("Cannot pass null array.");
             }
+            if (size < toHeapify.Length)
+            {
+                throw new ArgumentException("Heap size must be at least as big as array toHeapify.");
+            }
+
             this.numItems = toHeapify.Length;
-            this.items = heapify(toHeapify);
+            this.items = new int[size];
+            copy(toHeapify);
+            heapify();            
         }
 
-        private int[] heapify(int [] toHeapify)
+        private void heapify()
         {
             //get the last parent item in the unsorted array
             int parent = (this.numItems - 2) / 2;
@@ -36,10 +37,16 @@ namespace CodingChallenge.Models
             for(int i = parent; i >= 0; i--)
             {
                 siftDown(parent);
-            }
-
-            return toHeapify;
+            }            
         } 
+
+        private void copy(int[] heapified)
+        {
+            for (int i = 0; i < heapified.Length; i++)
+            {
+                this.items[i] = heapified[i];
+            }
+        }
 
         public bool insert(int item)
         {
@@ -48,7 +55,7 @@ namespace CodingChallenge.Models
                 return false;
             }
 
-            this.items[numItems] = item;
+            this.items[numItems] = item;            
             siftUp(item);
             this.numItems++;
 
@@ -118,7 +125,7 @@ namespace CodingChallenge.Models
             int childPos = this.numItems;
             int parentPos = (childPos - 1) / 2;
 
-            while (this.items[childPos] < this.items[parentPos])
+            while (this.items[childPos] > this.items[parentPos])
             {
                 int temp = this.items[parentPos];
                 this.items[parentPos] = this.items[childPos];

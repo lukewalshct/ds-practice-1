@@ -36,6 +36,10 @@ namespace CodingChallenge
             Console.WriteLine(Problem3.maxStep(2, 1));
             Console.WriteLine(Problem3.maxStep(4, 6));
             Console.WriteLine(Problem3.maxStep(2000, 1000000));
+
+            //problem4
+            Console.WriteLine("***********Problem4**********");
+            Console.WriteLine(Problem4.getMaxImmunized(2, 7, new int[] { 2000000, 5000000 }));
         }
 
         private static void printArray(int[] a)

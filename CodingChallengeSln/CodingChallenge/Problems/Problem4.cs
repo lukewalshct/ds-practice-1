@@ -21,12 +21,12 @@ namespace CodingChallenge.Problems
             }
 
             //create a mzx on top heap of the city populations
-            MaxHeap maxPopHeap = new MaxHeap(cityPops);
+            MaxHeap maxPopHeap = new MaxHeap(cityPops, B);
             int maxPop;
 
             //While the num items in heap is < num clinics, remove the largest population from
             //heap, split it in half, and insert the two "sub-populations"            
-            for(int i = maxPopHeap.numItems; i < B; i++)
+            for(int i = maxPopHeap.numItems; i <= B; i++)
             {
                 maxPop = maxPopHeap.remove();
 
