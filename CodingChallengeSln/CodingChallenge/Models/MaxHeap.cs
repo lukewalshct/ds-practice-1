@@ -6,16 +6,40 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.Models
 {
-    class MaxHeap
+    public class MaxHeap
     {
         private int[] items;
-        private int numItems;
+        public int numItems { get; internal set; }
 
         public MaxHeap(int heapSize)
         {
             this.items = new int[heapSize];
             this.numItems = 0;
         }
+
+        public MaxHeap(int[] toHeapify)
+        {
+            if (toHeapify == null)
+            {
+                throw new ArgumentNullException("Cannot pass null array.");
+            }
+            this.numItems = toHeapify.Length;
+            this.items = heapify(toHeapify);
+        }
+
+        private int[] heapify(int [] toHeapify)
+        {
+            //get the last parent item in the unsorted array
+            int parent = (this.numItems - 2) / 2;
+
+            //sift down parent and all items to the left
+            for(int i = parent; i >= 0; i--)
+            {
+                siftDown(parent);
+            }
+
+            return toHeapify;
+        } 
 
         public bool insert(int item)
         {
@@ -31,6 +55,15 @@ namespace CodingChallenge.Models
             return true;
         }
 
+        public int peek()
+        {
+            if (this.numItems == 0)
+            {
+                throw new ArgumentOutOfRangeException("The heap is empty.");
+            }
+
+            return this.items[0];
+        }
         public int remove()
         {
             if (this.numItems == 0)
