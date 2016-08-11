@@ -29,6 +29,13 @@ namespace CodingChallenge
             Console.WriteLine(Problem2.isPangram(n2));
             Console.WriteLine(Problem2.isPangram(n3));
             Console.WriteLine(Problem2.isPangram(n4));
+
+            //problem 3
+            Console.WriteLine("**********Problem3**********");
+            Console.WriteLine(Problem3.maxStep(2, 2));
+            Console.WriteLine(Problem3.maxStep(2, 1));
+            Console.WriteLine(Problem3.maxStep(4, 6));
+            Console.WriteLine(Problem3.maxStep(2000, 1000000));
         }
 
         private static void printArray(int[] a)

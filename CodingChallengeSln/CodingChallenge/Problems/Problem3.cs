@@ -15,15 +15,17 @@ namespace CodingChallenge.Problems
 
         private static int addNextAction(int totMoves, int badStep, int curStep, int moveCount)
         {
-            if (moveCount == totMoves) return curStep;
+            if (moveCount > totMoves) return curStep;
 
-            if(curStep + moveCount == badStep)
+            if (curStep + moveCount == badStep)
             {
-                return curStep + addNextAction(totMoves, badStep, curStep, moveCount + 1);
+                curStep += moveCount;
+                return addNextAction(totMoves, badStep, curStep, moveCount + 1)-1;                
             }
             else
             {
-                return curStep + moveCount + addNextAction(totMoves, badStep, curStep, moveCount + 1);
+                curStep += moveCount;
+                return addNextAction(totMoves, badStep, curStep, moveCount + 1);                
             }
         }
     }
