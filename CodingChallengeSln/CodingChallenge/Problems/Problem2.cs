@@ -8,23 +8,23 @@ namespace CodingChallenge.Problems
 {
     public static class Problem2
     {
-        public static int isPangram(string N)
+        public static int isPangram(string s)
         {
-            if(N == null)
+            if(s == null)
             {
-                throw new ArgumentNullException("String cannot be null.");
+                throw new ArgumentNullException("Input string cannot be null.");
             }
-            if (N.Length == 0 || N.Length > 103)
+            if (s.Length == 0 || s.Length > 103)
             {
                 throw new ArgumentOutOfRangeException("String must be between 1 and 103 characters.");
             }
 
-            N = N.ToLower();
+            s = s.ToLower();
             HashSet<char> remainingChars = createRemainingCharsSet();
 
-            for(int i = 0; i < N.Length; i++)
+            for(int i = 0; i < s.Length; i++)
             {                
-                remainingChars.Remove(N[i]);
+                remainingChars.Remove(s[i]);
             }
 
             return remainingChars.Count == 0 ? 1 : 0;
