@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.Problems
 {
+     /// <summary>
+    /// Problem2 is a static class containing the method that solves Problem2 of the 
+    /// coding challenge.
+    /// </summary>
     public static class Problem2
     {
         public static int isPangram(string s)

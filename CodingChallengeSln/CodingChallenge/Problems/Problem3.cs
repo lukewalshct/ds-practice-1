@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.Problems
 {
+    /// <summary>
+    /// Problem3 is a static class containing the method that solves Problem3 of the 
+    /// coding challenge.
+    /// </summary>
     public static class Problem3
     {
         public static int maxStep(int totMoves, int badStep)

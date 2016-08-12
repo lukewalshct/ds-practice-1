@@ -57,10 +57,10 @@
     <Compile Include="ProblemTests\Problem3Test.cs" />
     <Compile Include="ProblemTests\Problem4Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestServices\ArrayToStringConverter.cs" />
+    <Compile Include="TestServices\TestLogger.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestServices\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\CodingChallengeSln\CodingChallenge\CodingChallenge.csproj">
       <Project>{0d00081d-0a42-446e-b0e4-c26d20e89b05}</Project>

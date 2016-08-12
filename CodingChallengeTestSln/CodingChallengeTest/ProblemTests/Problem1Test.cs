@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingChallenge.Problems;
 using System.Linq;
+using CodingChallengeTest.TestServices;
 
 namespace CodingChallengeTest.ProblemTests
 {
@@ -41,9 +42,17 @@ namespace CodingChallengeTest.ProblemTests
             int[] a = new int[] { 8, 12, 16 };
             int[] b = new int[] { 4, 5, 7, 0, 0, 0 };
 
+            //save input as string for logger
+            string input1 = ArrayToStringConverter.convert(a);
+            string input2 = ArrayToStringConverter.convert(b);
+
             Problem1.mergeArray(a, b, 3);
 
             Assert.IsTrue(Enumerable.SequenceEqual(b, new int[] { 4, 5, 7, 8, 12, 16 }));
+
+            //save output as string for logger and log to txt file
+            string output = ArrayToStringConverter.convert(b);
+            TestLogger.log("Problem1", new string[] { input1, input2 }, new string[] { output });
         }
 
         [TestMethod]
@@ -52,9 +61,17 @@ namespace CodingChallengeTest.ProblemTests
             int[] a = new int[] { 8, 12, 16, 0, 0, 0, 0, 0 };
             int[] b = new int[] { 4, 5, 7, 0, 0, 0 };
 
+            //save input as string for logger
+            string input1 = ArrayToStringConverter.convert(a);
+            string input2 = ArrayToStringConverter.convert(b);
+
             Problem1.mergeArray(a, b, 3);
 
             Assert.IsTrue(Enumerable.SequenceEqual(b, new int[] { 4, 5, 7, 8, 12, 16 }));
+
+            //save output as string for logger and log to txt file
+            string output = ArrayToStringConverter.convert(b);
+            TestLogger.log("Problem1", new string[] { input1, input2 }, new string[] { output });
         }
 
         [TestMethod]
@@ -63,9 +80,17 @@ namespace CodingChallengeTest.ProblemTests
             int[] a = new int[] { };
             int[] b = new int[] { };
 
+            //save input as string for logger
+            string input1 = ArrayToStringConverter.convert(a);
+            string input2 = ArrayToStringConverter.convert(b);
+
             Problem1.mergeArray(a, b, 0);
 
             Assert.IsTrue(Enumerable.SequenceEqual(b, new int[] {}));
+
+            //save output as string for logger and log to txt file
+            string output = ArrayToStringConverter.convert(b);
+            TestLogger.log("Problem1", new string[] { input1, input2 }, new string[] { output });
         }
     }
 }

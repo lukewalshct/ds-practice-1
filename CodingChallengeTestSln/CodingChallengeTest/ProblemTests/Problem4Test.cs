@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingChallenge.Problems;
+using CodingChallengeTest.TestServices;
 
 namespace CodingChallengeTest.ProblemTests
 {
@@ -74,13 +75,17 @@ namespace CodingChallengeTest.ProblemTests
         [TestMethod]
         public void TestCorrectInput()
         {
-            Assert.AreEqual(100000, Problem4.getMaxImmunized(2, 7, new int[] { 200000, 500000 }));
+            int output = Problem4.getMaxImmunized(2, 7, new int[] { 200000, 500000 });
+            Assert.AreEqual(100000, output);
+            TestLogger.log("Problem4", new string[] { "2", "7" }, new string[] { output.ToString() });
         }
 
         [TestMethod]
         public void TestMinInputValues()
         {
-            Assert.AreEqual(1, Problem4.getMaxImmunized(1, 1, new int[] { 1 }));
+            int output = Problem4.getMaxImmunized(1, 1, new int[] { 1 });
+            Assert.AreEqual(1, output);
+            TestLogger.log("Problem4", new string[] { "1", "1" }, new string[] { output.ToString() });
         }
 
         [TestMethod]
@@ -93,6 +98,7 @@ namespace CodingChallengeTest.ProblemTests
             }
             int result = Problem4.getMaxImmunized(500000, 2000000, citiesPops);
             Assert.AreEqual(1250000, result );
+            //did not log results due to large input size
         }
     }
 }

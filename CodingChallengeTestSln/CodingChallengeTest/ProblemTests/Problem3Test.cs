@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingChallenge.Problems;
+using CodingChallengeTest.TestServices;
 
 namespace CodingChallengeTest.ProblemTests
 {
@@ -41,26 +42,34 @@ namespace CodingChallengeTest.ProblemTests
 
         [TestMethod]
         public void TestBadStepSkippedOutput()
-        {            
-            Assert.AreEqual(3, Problem3.maxStep(2, 2));
+        {
+            int output = Problem3.maxStep(2, 2);
+            Assert.AreEqual(3, output);
+            TestLogger.log("Problem3", new string[] { "2", "2" }, new string[] { output.ToString() });
         }
 
         [TestMethod]
         public void TestBadStepHitOutput()
         {
-            Assert.AreEqual(2, Problem3.maxStep(2, 1));
+            int output = Problem3.maxStep(2, 1);
+            Assert.AreEqual(2, output);
+            TestLogger.log("Problem3", new string[] { "2", "1" }, new string[] { output.ToString() });
         }
 
         [TestMethod]
         public void TestMinInputValues()
         {
-            Assert.AreEqual(0, Problem3.maxStep(1, 1));
+            int output = Problem3.maxStep(1, 1);
+            Assert.AreEqual(0, output);
+            TestLogger.log("Problem3", new string[] { "1", "1" }, new string[] { output.ToString() });
         }
 
         [TestMethod]
         public void TestMaxInputValues()
-        {            
-            Assert.AreEqual(2001000, Problem3.maxStep(2000, 4000000));
+        {
+            int output = Problem3.maxStep(2000, 4000000);
+            Assert.AreEqual(2001000, output);
+            TestLogger.log("Problem3", new string[] { "2000", "4000000" }, new string[] { output.ToString() });
         }
     }
 }

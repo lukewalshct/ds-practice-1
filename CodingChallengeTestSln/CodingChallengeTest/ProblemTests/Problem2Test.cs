@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingChallenge.Problems;
+using CodingChallengeTest.TestServices;
 
 namespace CodingChallengeTest.ProblemTests
 {
@@ -37,14 +38,18 @@ namespace CodingChallengeTest.ProblemTests
         public void IfPangramReturn1()
         {
             string s = "We promptly judged antique ivory buckles for the next prize";
-            Assert.AreEqual(1, Problem2.isPangram(s));            
+            int output = Problem2.isPangram(s);
+            Assert.AreEqual(1, output);
+            TestLogger.log("Problem2", new string[] { s }, new string[] { output.ToString() });
         }
 
         [TestMethod]
         public void IfNotPangramReturn0()
         {
             string s = "We promptly judged antique ivory buckles for the prize";
+            int output = Problem2.isPangram(s);
             Assert.AreEqual(0, Problem2.isPangram(s));
+            TestLogger.log("Problem2", new string[] { s }, new string[] { output.ToString() });
         }
     }
 }

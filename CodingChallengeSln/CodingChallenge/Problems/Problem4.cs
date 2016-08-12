@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.Problems
 {
+    /// <summary>
+    /// Problem4 is a static class containing the method that solves Problem4 of the 
+    /// coding challenge.
+    /// </summary>
     public static class Problem4
     {
         public static int getMaxImmunized(int numCities, int numClinics, int[] cityPops)
