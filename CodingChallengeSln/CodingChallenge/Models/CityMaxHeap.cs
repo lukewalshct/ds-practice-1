@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.Models
 {
-    public class MaxHeap
+    public class CityMaxHeap
     {
         private City[] cities;
         public int numCities { get; internal set; }
 
-        public MaxHeap(int[] popsToHeapify)
+        public CityMaxHeap(int[] popsToHeapify)
         {
             if (popsToHeapify == null)
             {

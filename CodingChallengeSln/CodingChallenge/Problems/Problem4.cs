@@ -22,18 +22,18 @@ namespace CodingChallenge.Problems
 
             //create a max on top heap of the city populations and "assign" a clinic
             //to each of the cities
-            MaxHeap maxPopHeap = new MaxHeap(cityPops);
+            CityMaxHeap cityHeap = new CityMaxHeap(cityPops);
             int maxPop;
 
             //while there are still clinics left to be assigned, assign a clinic to the
             //the city at the top of the heap (i.e. has the largest max population per clinic)     
             //and update the max clinic population, and then re-heapify
-            for(int i = maxPopHeap.numCities; i <= B; i++)
+            for(int i = cityHeap.numCities; i <= B; i++)
             {
-                maxPopHeap.addClinic();
+                cityHeap.addClinic();
             }
 
-            return maxPopHeap.peek();
+            return cityHeap.peek();
         }        
     }
 }
