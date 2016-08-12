@@ -20,46 +20,20 @@ namespace CodingChallenge.Problems
                 throw new ArgumentException("The number of populations must match the number of cities");
             }
 
-            //create a mzx on top heap of the city populations
-            MaxHeap maxPopHeap = new MaxHeap(cityPops, B);
+            //create a max on top heap of the city populations and "assign" a clinic
+            //to each of the cities
+            MaxHeap maxPopHeap = new MaxHeap(cityPops);
             int maxPop;
 
-            //While the num items in heap is < num clinics, remove the largest population from
-            //heap, split it in half, and insert the two "sub-populations"            
-            for(int i = maxPopHeap.numItems; i <= B; i++)
+            //while there are still clinics left to be assigned, assign a clinic to the
+            //the city at the top of the heap (i.e. has the largest max population per clinic)     
+            //and update the max clinic population, and then re-heapify
+            for(int i = maxPopHeap.numCities; i <= B; i++)
             {
-                maxPop = maxPopHeap.remove();
-
-                int[] popSplits = split(maxPop);
-                addSplitPops(maxPopHeap, popSplits);                
+                maxPopHeap.addClinic();
             }
 
             return maxPopHeap.peek();
-        }
-
-        private static int[] split(int maxPop)
-        {
-            int[] split = new int[2];
-
-            if(maxPop % 2 ==1)
-            {
-                split[0] = maxPop / 2;
-                split[1] = (maxPop / 2) + 1;
-            }
-            else
-            {
-                split[0] = split[1] = maxPop / 2;
-            }
-
-            return split;
-        }
-
-        private static void addSplitPops(MaxHeap heap, int[] toAdd)
-        {
-            for(int i = 0; i < toAdd.Length; i++)
-            {
-                heap.insert(toAdd[i]);
-            }
-        }
+        }        
     }
 }

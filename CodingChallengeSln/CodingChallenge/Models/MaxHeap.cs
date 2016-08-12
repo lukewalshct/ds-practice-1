@@ -45,19 +45,12 @@ namespace CodingChallenge.Models
             }            
         } 
 
-        //public bool insert(int item)
-        //{
-        //    if (this.numCities == this.cities.Length)
-        //    {
-        //        return false;
-        //    }
-
-        //    this.cities[numCities] = item;            
-        //    siftUp(item);
-        //    this.numCities++;
-
-        //    return true;
-        //}
+        public void addClinic()
+        {
+            City c = this.cities[0];
+            c.addClinic();
+            siftDown(0);
+        }        
 
         public int peek()
         {
@@ -67,25 +60,7 @@ namespace CodingChallenge.Models
             }
             return this.cities[0].maxClinicPop;
         }
-
-        //public int remove()
-        //{
-        //    if (this.numCities == 0)
-        //    {
-        //        throw new ArgumentOutOfRangeException("The heap is empty.");
-        //    }
-
-        //    //save result in the front of the queue and decrement numCities
-        //    int result = this.cities[0];
-        //    this.numCities--;
-
-        //    //move last item in heap to front and "sift down"
-        //    this.cities[0] = this.cities[this.numCities];
-        //    siftDown(0);
-
-        //    return result;            
-        //}
-
+        
         private void siftDown(int i)
         {
             //set index references for item to be sifted (parent) and leftmost child
@@ -118,38 +93,23 @@ namespace CodingChallenge.Models
             this.cities[parent] = cityToSift;
         }
 
-        //private void siftUp(int item)
-        //{
-        //    int childPos = this.numCities;
-        //    int parentPos = (childPos - 1) / 2;
-
-        //    while (this.cities[childPos] > this.cities[parentPos])
-        //    {
-        //        int temp = this.cities[parentPos];
-        //        this.cities[parentPos] = this.cities[childPos];
-        //        this.cities[childPos] = temp;
-        //        childPos = parentPos;
-        //        parentPos = (childPos - 1) / 2;
-        //    }
-        //}
-    }
-
-    class City
-    {
-        int origPop;
-        int numClinics;
-        public int maxClinicPop { get; internal set; }
-
-        public City(int pop)
+        class City
         {
-            this.origPop = this.maxClinicPop = pop;
-            this.numClinics = 1;            
-        }
+            int origPop;
+            int numClinics;
+            public int maxClinicPop { get; internal set; }
 
-        public void addClinic()
-        {
-            this.numClinics++;
-            this.maxClinicPop = (int)Math.Ceiling((double)(this.origPop/this.maxClinicPop));            
-        }
-    }
+            public City(int pop)
+            {
+                this.origPop = this.maxClinicPop = pop;
+                this.numClinics = 1;
+            }
+
+            public void addClinic()
+            {
+                this.numClinics++;
+                this.maxClinicPop = (int)Math.Ceiling((double)this.origPop / this.numClinics);
+            }
+        }            
+    }    
 }

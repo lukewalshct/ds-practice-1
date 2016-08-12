@@ -39,7 +39,9 @@ namespace CodingChallenge
 
             //problem4
             Console.WriteLine("***********Problem4**********");
-            Console.WriteLine(Problem4.getMaxImmunized(2, 7, new int[] { 2000000, 5000000 }));
+            Console.WriteLine(Problem4.getMaxImmunized(2, 7, new int[] { 200000, 500000 }));
+            Console.WriteLine(Problem4.getMaxImmunized(3, 10, new int[] { 200000, 500000, 50000 }));
+            Console.WriteLine(Problem4.getMaxImmunized(4, 4, new int[] { 200000, 500000, 100000, 250000 }));
         }
 
         private static void printArray(int[] a)
