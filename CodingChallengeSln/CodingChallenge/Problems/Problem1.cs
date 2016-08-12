@@ -15,11 +15,15 @@ namespace CodingChallenge.Problems
     {
         public static void mergeArray(int[] a, int[] b, int M)
         {
-            //Contract.Requires<ArgumentNullException>(a != null && b != null, 
-            //    "Cannot pass a null array.");
-            //Contract.Requires<ArgumentException>(M == a.Length && M == 2*b.Length, 
-            //    "Invalid value for parameter M.");
-            
+            if(a == null || b == null)
+            {
+                throw new ArgumentNullException("Cannot pass a null array.");
+            }
+            if(M != a.Length && M != 2*b.Length)
+            {
+                throw new ArgumentException("Invalid value for parameter M.");
+            }
+
             int indexA = M - 1;
             int indexB = M - 1;
 
