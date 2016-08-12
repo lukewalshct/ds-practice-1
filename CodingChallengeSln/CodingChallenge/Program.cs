@@ -13,11 +13,12 @@ namespace CodingChallenge
         {
             //Problem1
             int[] a = new int[] { 3, 5, 7 };
-            int[] b = new int[] { 2, 4, 6, 0, 0, 0 };
-            printArray(a);
-            printArray(b);
+            int[] b = new int[] { 2, 4, 6, 0, 0, 0 };            
             Problem1.mergeArray(a, b, a.Length);
-            printArray(b);
+
+            int[] a2 = new int[] { 3, 5, 7, 0, 0 };
+            int[] b2 = new int[] { 2, 4, 6, 0, 0, 0 };
+            Problem1.mergeArray(a2, b2, 3);
 
             //Problem2
             string n1 = "The quick brown fox jumps over the lazy dog";

@@ -18,11 +18,14 @@ namespace CodingChallenge.Problems
             if(a == null || b == null)
             {
                 throw new ArgumentNullException("Cannot pass a null array.");
-            }
-            if(M != a.Length && M != 2*b.Length)
+            }            
+            if (2*M != b.Length)
             {
-                throw new ArgumentException("Number of elements (parameter M)" +
-                    " does not match array length specifications.");
+                throw new ArgumentException("Length of array b must equal twice the number of elements (M).");
+            }
+            if(!(isSorted(a, M) && isSorted(b, M)))
+            {
+                throw new ArgumentException("Input arrays must be sorted");
             }
 
             int indexA = M - 1;
@@ -41,6 +44,27 @@ namespace CodingChallenge.Problems
                     indexB--;
                 }
             }            
+        }
+
+        private static bool isSorted(int[] a, int M)
+        {
+            if(a.Length == 0)
+            {
+                return true;
+            }
+
+            int prev = a[0];
+
+            for (int i = 1; i < a.Length && i < M; i++)
+            {
+                if (a[i]  < prev)
+                {
+                    return false;
+                }
+                prev = a[i];
+            }
+
+            return true;
         }
     }
 }
