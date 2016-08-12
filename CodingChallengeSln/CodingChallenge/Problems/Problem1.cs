@@ -21,7 +21,8 @@ namespace CodingChallenge.Problems
             }
             if(M != a.Length && M != 2*b.Length)
             {
-                throw new ArgumentException("Invalid value for parameter M.");
+                throw new ArgumentException("Number of elements (parameter M)" +
+                    " does not match array length specifications.");
             }
 
             int indexA = M - 1;
