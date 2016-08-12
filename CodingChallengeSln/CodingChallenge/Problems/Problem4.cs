@@ -13,6 +13,14 @@ namespace CodingChallenge.Problems
     /// </summary>
     public static class Problem4
     {
+        /// <summary>
+        /// Calculates the population of the clinic with the maximum number of 
+        /// immunized patients. 
+        /// </summary>
+        /// <param name="numCities">Number of cities.</param>
+        /// <param name="numClinics">Number of clinics.</param>
+        /// <param name="cityPops">City populations.</param>
+        /// <returns></returns>
         public static int getMaxImmunized(int numCities, int numClinics, int[] cityPops)
         {
             if(cityPops == null)

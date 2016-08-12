@@ -13,6 +13,14 @@ namespace CodingChallenge.Problems
     /// </summary>
     public static class Problem1
     {
+        /// <summary>
+        /// Merges two sorted input arrays, a and b and returns sorted result. 
+        /// Both arrays must have M elements, and the capacity of the second array
+        /// must equal 2*M.
+        /// </summary>
+        /// <param name="a">First array.</param>
+        /// <param name="b">Second array (capacity = 2*M).</param>
+        /// <param name="M">Number elements in each input array.</param>
         public static void mergeArray(int[] a, int[] b, int M)
         {
             if(a == null || b == null)
@@ -46,6 +54,12 @@ namespace CodingChallenge.Problems
             }            
         }
 
+        /// <summary>
+        /// Checks that the input array is sorted.
+        /// </summary>
+        /// <param name="a">Input array.</param>
+        /// <param name="M">Number of elements.</param>
+        /// <returns></returns>
         private static bool isSorted(int[] a, int M)
         {
             if(a.Length == 0)

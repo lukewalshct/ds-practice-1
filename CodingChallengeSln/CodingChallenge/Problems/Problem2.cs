@@ -12,6 +12,11 @@ namespace CodingChallenge.Problems
     /// </summary>
     public static class Problem2
     {
+        /// <summary>
+        /// Checks if a string is a pangram.
+        /// </summary>
+        /// <param name="s">String to check for pangram property.</param>
+        /// <returns>1 if is pangram else 0.</returns>
         public static int isPangram(string s)
         {
             if(s == null)
@@ -24,6 +29,7 @@ namespace CodingChallenge.Problems
             }
 
             s = s.ToLower();
+            //create hashset that represents chars that haven't been found yet in the string
             HashSet<char> remainingChars = createRemainingCharsSet();
 
             for(int i = 0; i < s.Length; i++)
@@ -34,6 +40,10 @@ namespace CodingChallenge.Problems
             return remainingChars.Count == 0 ? 1 : 0;
         }
 
+        /// <summary>
+        /// Creates hashset of all lowercase alphabet (a-z) characters.
+        /// </summary>
+        /// <returns>Hashset of all lowercase alphabet (a-z) characters.</returns>
         private static HashSet<char> createRemainingCharsSet()
         {
             HashSet<char> remainingChars = new HashSet<char>();

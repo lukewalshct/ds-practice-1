@@ -11,6 +11,10 @@ namespace CodingChallenge.Models
         private City[] cities;
         public int numCities { get; internal set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="popsToHeapify">Populations of each city</param>
         public CityMaxHeap(int[] popsToHeapify)
         {
             if (popsToHeapify == null)
@@ -21,10 +25,15 @@ namespace CodingChallenge.Models
             this.numCities = popsToHeapify.Length;
             this.cities = new City[this.numCities];
 
+            //create the max on top heap of Cities from the populations array
             createCities(popsToHeapify);
             heapifyCities();                                                
         }
 
+        /// <summary>
+        /// Creates array of City objects from the array of populations.
+        /// </summary>
+        /// <param name="popsToHeapify">Populations of each city</param>
         private void createCities(int[] popsToHeapify)
         {
             for(int i = 0; i < popsToHeapify.Length; i++)
@@ -37,6 +46,10 @@ namespace CodingChallenge.Models
             }
         }
 
+        /// <summary>
+        /// Turns existing cities array into max on top heap,  where the clinic 
+        /// with max # immunized serves as the key for comparison.
+        /// </summary>
         private void heapifyCities()
         {
             //get the last parent item in the unsorted array
@@ -49,6 +62,9 @@ namespace CodingChallenge.Models
             }            
         } 
 
+        /// <summary>
+        /// "Distributes" the next clinic and then re-enforces heap property.
+        /// </summary>
         public void addClinic()
         {
             City c = this.cities[0];
@@ -56,6 +72,10 @@ namespace CodingChallenge.Models
             siftDown(0);
         }        
 
+        /// <summary>
+        /// Peeks at the element at the top.
+        /// </summary>
+        /// <returns>Population of clinic with max immunized population</returns>
         public int peek()
         {
             if (this.numCities == 0)
@@ -65,6 +85,10 @@ namespace CodingChallenge.Models
             return this.cities[0].maxClinicPop;
         }
         
+        /// <summary>
+        /// "Sifts down" element to proper place in heap to reinfoce heap property.
+        /// </summary>
+        /// <param name="i">Position of element to sift.</param>
         private void siftDown(int i)
         {
             //set index references for item to be sifted (parent) and leftmost child
@@ -97,6 +121,9 @@ namespace CodingChallenge.Models
             this.cities[parent] = cityToSift;
         }
 
+        /// <summary>
+        /// Represents a city.
+        /// </summary>
         class City
         {
             int origPop;
@@ -112,6 +139,8 @@ namespace CodingChallenge.Models
             public void addClinic()
             {
                 this.numClinics++;
+                //reset the max clinic pop, and always round up since pop needs to be int,
+                //and avoid precision loss
                 this.maxClinicPop = (int)Math.Ceiling((double)this.origPop / this.numClinics);
             }
         }            
