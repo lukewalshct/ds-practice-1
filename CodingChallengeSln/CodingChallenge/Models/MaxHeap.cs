@@ -8,30 +8,35 @@ namespace CodingChallenge.Models
 {
     public class MaxHeap
     {
-        private int[] items;
-        public int numItems { get; internal set; }
+        private City[] cities;
+        public int numCities { get; internal set; }
 
-        public MaxHeap(int[] toHeapify, int size)
+        public MaxHeap(int[] popsToHeapify)
         {
-            if (toHeapify == null)
+            if (popsToHeapify == null)
             {
                 throw new ArgumentNullException("Cannot pass null array.");
             }
-            if (size < toHeapify.Length)
-            {
-                throw new ArgumentException("Heap size must be at least as big as array toHeapify.");
-            }
 
-            this.numItems = toHeapify.Length;
-            this.items = new int[size];
-            copy(toHeapify);
-            heapify();            
+            this.numCities = popsToHeapify.Length;
+            this.cities = new City[this.numCities];
+
+            createCities(popsToHeapify);
+            heapifyCities();                                                
         }
 
-        private void heapify()
+        private void createCities(int[] popsToHeapify)
+        {
+            for(int i = 0; i < popsToHeapify.Length; i++)
+            {
+                this.cities[i] = new City(popsToHeapify[i]);
+            }
+        }
+
+        private void heapifyCities()
         {
             //get the last parent item in the unsorted array
-            int parent = (this.numItems - 2) / 2;
+            int parent = (this.numCities - 2) / 2;
 
             //sift down parent and all items to the left
             for(int i = parent; i >= 0; i--)
@@ -40,99 +45,111 @@ namespace CodingChallenge.Models
             }            
         } 
 
-        private void copy(int[] heapified)
-        {
-            for (int i = 0; i < heapified.Length; i++)
-            {
-                this.items[i] = heapified[i];
-            }
-        }
+        //public bool insert(int item)
+        //{
+        //    if (this.numCities == this.cities.Length)
+        //    {
+        //        return false;
+        //    }
 
-        public bool insert(int item)
-        {
-            if (this.numItems == this.items.Length)
-            {
-                return false;
-            }
+        //    this.cities[numCities] = item;            
+        //    siftUp(item);
+        //    this.numCities++;
 
-            this.items[numItems] = item;            
-            siftUp(item);
-            this.numItems++;
-
-            return true;
-        }
+        //    return true;
+        //}
 
         public int peek()
         {
-            if (this.numItems == 0)
+            if (this.numCities == 0)
             {
                 throw new ArgumentOutOfRangeException("The heap is empty.");
             }
-
-            return this.items[0];
+            return this.cities[0].maxClinicPop;
         }
-        public int remove()
-        {
-            if (this.numItems == 0)
-            {
-                throw new ArgumentOutOfRangeException("The heap is empty.");
-            }
 
-            //save result in the front of the queue and decrement numItems
-            int result = this.items[0];
-            this.numItems--;
+        //public int remove()
+        //{
+        //    if (this.numCities == 0)
+        //    {
+        //        throw new ArgumentOutOfRangeException("The heap is empty.");
+        //    }
 
-            //move last item in heap to front and "sift down"
-            this.items[0] = this.items[this.numItems];
-            siftDown(0);
+        //    //save result in the front of the queue and decrement numCities
+        //    int result = this.cities[0];
+        //    this.numCities--;
 
-            return result;            
-        }
+        //    //move last item in heap to front and "sift down"
+        //    this.cities[0] = this.cities[this.numCities];
+        //    siftDown(0);
+
+        //    return result;            
+        //}
 
         private void siftDown(int i)
         {
             //set index references for item to be sifted (parent) and leftmost child
             int parent = i;
             int child = 2 * parent + 1;
-            int itemToSift = this.items[i];
+            City cityToSift = this.cities[i];
 
             //traverse the heap from top down and swap places with item until the item's children
             //are both less than the item
-            while(child < this.numItems)
+            while(child < this.numCities)
             {
                 //set child index reference to the greater of the two children
-                if(child < this.numItems -1 && this.items[child] < this.items[child+1])
+                if(child < this.numCities -1 && this.cities[child].maxClinicPop < 
+                    this.cities[child+1].maxClinicPop)
                 {
                     child++;
                 }
                 //if the item to sift is >= both its children, the sifting is done
-                if(itemToSift >= this.items[child])
+                if(cityToSift.maxClinicPop >= this.cities[child].maxClinicPop)
                 {
                     break;
                 }
                 //swap the parent (item being sifted) with its larger child
-                this.items[parent] = this.items[child];
+                this.cities[parent] = this.cities[child];
                 parent = child;
                 child = 2 * parent + 1;
             }
 
             //once sifting is done, set the item in its final place in the heap
-            this.items[parent] = itemToSift;
+            this.cities[parent] = cityToSift;
         }
 
-        private void siftUp(int item)
-        {
-            int childPos = this.numItems;
-            int parentPos = (childPos - 1) / 2;
+        //private void siftUp(int item)
+        //{
+        //    int childPos = this.numCities;
+        //    int parentPos = (childPos - 1) / 2;
 
-            while (this.items[childPos] > this.items[parentPos])
-            {
-                int temp = this.items[parentPos];
-                this.items[parentPos] = this.items[childPos];
-                this.items[childPos] = temp;
-                childPos = parentPos;
-                parentPos = (childPos - 1) / 2;
-            }
+        //    while (this.cities[childPos] > this.cities[parentPos])
+        //    {
+        //        int temp = this.cities[parentPos];
+        //        this.cities[parentPos] = this.cities[childPos];
+        //        this.cities[childPos] = temp;
+        //        childPos = parentPos;
+        //        parentPos = (childPos - 1) / 2;
+        //    }
+        //}
+    }
+
+    class City
+    {
+        int origPop;
+        int numClinics;
+        public int maxClinicPop { get; internal set; }
+
+        public City(int pop)
+        {
+            this.origPop = this.maxClinicPop = pop;
+            this.numClinics = 1;            
+        }
+
+        public void addClinic()
+        {
+            this.numClinics++;
+            this.maxClinicPop = (int)Math.Ceiling((double)(this.origPop/this.maxClinicPop));            
         }
     }
 }
