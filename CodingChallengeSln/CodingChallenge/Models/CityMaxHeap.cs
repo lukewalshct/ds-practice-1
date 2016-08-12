@@ -29,6 +29,10 @@ namespace CodingChallenge.Models
         {
             for(int i = 0; i < popsToHeapify.Length; i++)
             {
+                if(!(popsToHeapify[i] >= 1 && popsToHeapify[i] <= 5000000))
+                {
+                    throw new ArgumentOutOfRangeException("City populations must be between 1 and 5,000,000.");
+                }
                 this.cities[i] = new City(popsToHeapify[i]);
             }
         }
