@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CodingChallengeTest
+namespace CodingChallengeTest.ProblemTests
 {
     [TestClass]
-    public class UnitTest1
+    public class Problem1Test
     {
         [TestMethod]
-        public void TestMethod1()
+        public void estMethod1()
         {
         }
     }
