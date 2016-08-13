@@ -13,7 +13,8 @@ Practice data structure and algorithm problems. (Original problems intentionally
 
 ## To Test Problem Solutions
 1. Open "CodingChallengeTestSln.sln" in the "CodingChallengeTestSln" folder.
-2. On the toolbar at the top select "Test">"Run">"All Tests" to run tests.
-3. Navigate to the "ProblemTests" folder to add additional test methods.
-4. Output for test methods with expected output is also logged in this directory:
+2. Clean and build both solutions.
+3. In the test solution, on the toolbar at the top select "Test">"Run">"All Tests" to run tests.
+4. Navigate to the "ProblemTests" folder to add additional test methods.
+5. Output for test methods with expected output is also logged in this directory:
 	"CodingChallengeTestSln\CodingChallengeTest\bin\Debug\Logs"
